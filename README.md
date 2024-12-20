@@ -1,5 +1,3 @@
-https://www.nexusmods.com/bloodborne/mods/165
-
 *** SOUNDCRASHFIX WORKAROUND
 
 This tool patches the "userdata0010" file to fix the sound crash issue when the game is 
