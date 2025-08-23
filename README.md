@@ -28,7 +28,7 @@ This tool patches the `userdata0010` save file to prevent sound-related crashes 
 - **GUI Version**: Graphical interface (Avalonia - Cross-platform)
 
 ### GUI Preview
-![SoundCrashFix GUI](GUI/screenshot.png)
+![SoundCrashFix GUI](GUI/gui-preview.png)
 
 *Modern terminal-style interface with auto-detection and one-click patching*
 
