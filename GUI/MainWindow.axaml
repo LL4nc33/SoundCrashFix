@@ -1,0 +1,226 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="SoundCrashFixGUI.MainWindow"
+        Title="SoundCrashFix"
+        Width="550" Height="420"
+        CanResize="False"
+        WindowStartupLocation="CenterScreen"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaChromeHints="NoChrome"
+        TransparencyLevelHint="None">
+    
+    <Grid RowDefinitions="32,*">
+        
+        <!-- Custom Title Bar -->
+        <Border Grid.Row="0" 
+                Background="#FF0A0A0A"
+                BorderBrush="{StaticResource BorderBrush}"
+                BorderThickness="0,0,0,1">
+            <Grid>
+                <!-- Drag Area -->
+                <Border Name="TitleBarDragArea" 
+                        Background="Transparent"
+                        HorizontalAlignment="Stretch"/>
+                
+                <!-- Title -->
+                <TextBlock Text="SOUNDCRASHFIX"
+                           FontFamily="Consolas,monospace"
+                           FontSize="11"
+                           FontWeight="Bold"
+                           Foreground="{StaticResource SubtleBrush}"
+                           VerticalAlignment="Center"
+                           Margin="12,0,0,0"
+                           LetterSpacing="2"/>
+                
+                <!-- Window Controls -->
+                <StackPanel Orientation="Horizontal" 
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Stretch">
+                    
+                    <Button Name="MinimizeButton"
+                            Width="46" Height="32"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            CornerRadius="0"
+                            Padding="0"
+                            VerticalContentAlignment="Center"
+                            HorizontalContentAlignment="Center">
+                        <Canvas Width="10" Height="1">
+                            <Line StartPoint="0,0" EndPoint="10,0" 
+                                  Stroke="{StaticResource SubtleBrush}" 
+                                  StrokeThickness="1"/>
+                        </Canvas>
+                    </Button>
+                    
+                    
+                    <Button Name="CloseButton"
+                            Width="46" Height="32"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            CornerRadius="0"
+                            Padding="0"
+                            VerticalContentAlignment="Center"
+                            HorizontalContentAlignment="Center">
+                        <Canvas Width="10" Height="10">
+                            <Line StartPoint="0,0" EndPoint="10,10" 
+                                  Stroke="{StaticResource SubtleBrush}" 
+                                  StrokeThickness="1"/>
+                            <Line StartPoint="0,10" EndPoint="10,0" 
+                                  Stroke="{StaticResource SubtleBrush}" 
+                                  StrokeThickness="1"/>
+                        </Canvas>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+        
+        <!-- Main Content -->
+        <Grid Grid.Row="1" RowDefinitions="Auto,*,Auto" Margin="16">
+            
+            <!-- Header -->
+            <StackPanel Grid.Row="0" Spacing="2" Margin="0,8,0,16">
+                <TextBlock Text="BLOODBORNE SOUND CRASH FIX"
+                           FontFamily="Consolas,monospace"
+                           FontSize="16"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"
+                           LetterSpacing="1"/>
+                <TextBlock Text="Patches userdata0010 at offset 0x204E for shadPS4 emulator"
+                           FontFamily="Consolas,monospace"
+                           FontSize="11"
+                           Foreground="{StaticResource SubtleBrush}"
+                           HorizontalAlignment="Center"/>
+            </StackPanel>
+            
+            <!-- Main Controls -->
+            <StackPanel Grid.Row="1" Spacing="6">
+                <!-- Save File -->
+                <StackPanel Spacing="4">
+                    <TextBlock Text="SAVE FILE" 
+                               FontFamily="Consolas,monospace"
+                               FontSize="11"
+                               FontWeight="Bold"
+                               LetterSpacing="1"/>
+                    <Grid ColumnDefinitions="*,8,Auto">
+                        <TextBox Name="SavePathTextBox" 
+                                 Grid.Column="0"
+                                 Watermark="Path to userdata0010..."
+                                 IsReadOnly="True"
+                                 FontSize="11"
+                                 Height="28"/>
+                        <Button Name="BrowseSaveButton" 
+                                Grid.Column="2"
+                                Content="BROWSE"
+                                FontSize="11"
+                                FontWeight="Bold"
+                                Height="30"
+                                Width="75"/>
+                    </Grid>
+                    <TextBlock Name="SaveStatusText" 
+                               FontFamily="Consolas,monospace"
+                               FontSize="10"
+                               Foreground="{StaticResource SubtleBrush}"
+                               Text="No file selected"/>
+                </StackPanel>
+                
+                <!-- Emulator -->
+                <StackPanel Spacing="4">
+                    <TextBlock Text="EMULATOR (OPTIONAL)" 
+                               FontFamily="Consolas,monospace"
+                               FontSize="11"
+                               FontWeight="Bold"
+                               LetterSpacing="1"/>
+                    <Grid ColumnDefinitions="*,8,Auto">
+                        <TextBox Name="EmulatorPathTextBox" 
+                                 Grid.Column="0"
+                                 Watermark="Path to shadps4.exe..."
+                                 IsReadOnly="True"
+                                 FontSize="11"
+                                 Height="28"/>
+                        <Button Name="BrowseEmulatorButton" 
+                                Grid.Column="2"
+                                Content="BROWSE"
+                                FontSize="11"
+                                FontWeight="Bold"
+                                Height="30"
+                                Width="75"/>
+                    </Grid>
+                    <!-- Checkboxes directly under emulator -->
+                    <CheckBox Name="AutoSaveSettingsCheckBox" 
+                              Content="Save settings for next time"
+                              FontFamily="Consolas,monospace"
+                              FontSize="11"
+                              IsChecked="True"
+                              Margin="0,8,0,0"/>
+                    <CheckBox Name="AutoLaunchCheckBox" 
+                              Content="Launch emulator after patching"
+                              FontFamily="Consolas,monospace"
+                              FontSize="11"
+                              IsChecked="True"
+                              Margin="0,4,0,0"/>
+                </StackPanel>
+                
+                <!-- Status (Always Visible) -->
+                <StackPanel Name="StatusSection" Spacing="4">
+                    <TextBlock Name="StatusTitle" 
+                               Text="Status: Waiting for save file"
+                               FontFamily="Consolas,monospace"
+                               FontSize="11"
+                               FontWeight="Bold"
+                               LetterSpacing="1"/>
+                    <TextBlock Name="StatusMessage" 
+                               Text="Select a save file to begin"
+                               FontFamily="Consolas,monospace"
+                               FontSize="10"
+                               Foreground="{StaticResource SubtleBrush}"
+                               TextWrapping="Wrap"/>
+                    <Border Name="TechnicalDetails"
+                            Background="#FF0A0A0A"
+                            BorderBrush="{StaticResource BorderBrush}"
+                            BorderThickness="1"
+                            Padding="6"
+                            IsVisible="False">
+                        <TextBlock Name="TechnicalText"
+                                   FontFamily="Consolas,monospace"
+                                   FontSize="10"
+                                   Foreground="#FF00FF00"/>
+                    </Border>
+                </StackPanel>
+            </StackPanel>
+            
+            <!-- Bottom Actions -->
+            <Grid Grid.Row="2" ColumnDefinitions="*,8,Auto,8,Auto" Margin="0,8,0,8">
+                <TextBlock Grid.Column="0" 
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Left"
+                           FontFamily="Consolas,monospace"
+                           FontSize="10"
+                           Foreground="{StaticResource SubtleBrush}"
+                           Text="v0.2 | 2025"/>
+                
+                <Button Grid.Column="2" 
+                        Name="SaveSettingsButton"
+                        Content="SAVE"
+                        FontSize="11"
+                        FontWeight="Bold"
+                        Width="75"
+                        Height="30"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"/>
+                
+                <Button Grid.Column="4" 
+                        Name="PatchButton"
+                        Content="PATCH"
+                        Classes="primary"
+                        FontSize="11"
+                        FontWeight="Bold"
+                        Width="75"
+                        Height="30"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        IsEnabled="False"/>
+            </Grid>
+            
+        </Grid>
+    </Grid>
+</Window>
