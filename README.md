@@ -1,6 +1,6 @@
-# SoundCrashFix for Bloodborne (shadPS4)
+# SoundCrashFix for Bloodborne (shadPS4) v0.2
 
-A workaround tool that fixes sound crash issues in Bloodborne when running on the shadPS4 emulator.
+A complete toolkit that fixes sound crash issues in Bloodborne when running on the shadPS4 emulator.
 
 ## Overview
 
@@ -8,16 +8,34 @@ This tool patches the `userdata0010` save file to prevent sound-related crashes 
 
 ## Features
 
+### v0.2 Features
+- **GUI Version**: Modern terminal-style interface for casual users
+- **Auto-Detection**: Automatically finds save files and emulator paths
+- **Settings Persistence**: Save your configuration for next time
+- **Cross-Platform Support**: Works on Windows, macOS, and Linux
+- **Custom Window Chrome**: Clean, minimal interface design
+
+### Core Features
 - **Automatic Patching**: Patches the save file with a single click
 - **Safe Operation**: Checks if patching is needed before making changes
 - **Emulator Integration**: Automatically launches shadPS4 after patching
 - **Simple CLI**: Clear console output showing patch status
 - **Error Handling**: Validates file paths and handles errors gracefully
 
+## Available Versions
+
+- **CLI Version**: Command-line tool (.NET Framework 4.7.2 - Windows only)
+- **GUI Version**: Graphical interface (Avalonia - Cross-platform)
+
+### GUI Preview
+![SoundCrashFix GUI](GUI/screenshot.png)
+
+*Modern terminal-style interface with auto-detection and one-click patching*
+
 ## Requirements
 
-- Windows OS
-- .NET Framework 4.7.2 or higher
+- **CLI**: Windows OS, .NET Framework 4.7.2 or higher
+- **GUI**: .NET 9.0 (Windows, macOS, Linux)
 - shadPS4 emulator
 - Bloodborne game files configured in shadPS4
 
