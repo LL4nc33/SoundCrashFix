@@ -1,6 +1,6 @@
-# How to Use SoundCrashFix for Bloodborne
+# How to Use SoundCrashFix for Bloodborne v0.2
 
-A step-by-step guide to fix sound crashes in Bloodborne on shadPS4 emulator.
+A complete guide to fix sound crashes in Bloodborne on shadPS4 emulator using both CLI and GUI versions.
 
 ## Prerequisites
 
@@ -8,9 +8,68 @@ Before starting, make sure you have:
 - ✅ shadPS4 emulator installed
 - ✅ Bloodborne configured and running in shadPS4
 - ✅ Played Bloodborne at least once (to create save files)
-- ✅ Windows OS with .NET Framework 4.7.2+
 
-## Quick Start Guide
+### System Requirements
+- **CLI Version**: Windows OS with .NET Framework 4.7.2+
+- **GUI Version**: .NET 9.0 (Windows, macOS, Linux)
+
+## Choose Your Version
+
+### 🖥️ GUI Version (Recommended for Casual Users)
+
+Perfect for users who prefer a visual interface with auto-detection features.
+
+#### Features:
+- Modern terminal-style interface
+- Auto-detects save files and shadPS4 paths
+- Settings persistence (saves your configuration)
+- One-click patching
+- Cross-platform support
+
+#### Quick Setup:
+1. Download the GUI version
+2. Run `SoundCrashFixGUI.exe` (Windows) or equivalent for your platform
+3. The tool will automatically detect your files
+4. Click "PATCH" to fix the sound issue
+
+### ⌨️ CLI Version (Advanced Users)
+
+For users who prefer command-line tools or need automation.
+
+## GUI Version Guide
+
+### Step 1: Download and Run
+
+1. Download the GUI version for your platform
+2. Run the executable
+3. The interface will open with auto-detection running
+
+### Step 2: File Detection
+
+The GUI automatically searches for:
+- Bloodborne save files (`userdata0010`) in common shadPS4 locations
+- shadPS4 executable files
+
+**Common auto-detected paths:**
+- Windows: `C:\shadPS4\`, `D:\shadPS4\`
+- Linux: `/home/deck/shadPS4`, `~/shadPS4`
+
+### Step 3: Manual Selection (if needed)
+
+If auto-detection doesn't find your files:
+1. Click **BROWSE** next to "SAVE FILE"
+2. Navigate to your `userdata0010` file
+3. Click **BROWSE** next to "EMULATOR" (optional)
+4. Select your `shadps4.exe` file
+
+### Step 4: Patch and Launch
+
+1. Check "Launch emulator after patching" if desired
+2. Check "Save settings for next time" to remember your paths
+3. Click **PATCH**
+4. The tool will fix the sound issue and optionally launch shadPS4
+
+## CLI Version Guide (Legacy)
 
 ### Step 1: Download the Tool
 
@@ -70,6 +129,30 @@ set SHADPS4_EXE="C:\shadPS4\shadps4.exe"
 
 4. Press **ESC** to close the patch tool window
 5. Bloodborne will launch in shadPS4 without sound crashes!
+
+## File Locations Reference
+
+### Windows
+```
+Common shadPS4 locations:
+- C:\shadPS4\
+- D:\shadPS4\
+- C:\Emulators\shadPS4\
+
+Save file pattern:
+[shadPS4]\user\savedata\1\[CUSAXXXXX]\SPRJ0005\userdata0010
+```
+
+### Linux/Steam Deck
+```
+Common shadPS4 locations:
+- /home/deck/shadPS4
+- ~/shadPS4
+- ~/.local/share/shadPS4
+
+Save file pattern:
+[shadPS4]/user/savedata/1/[CUSAXXXXX]/SPRJ0005/userdata0010
+```
 
 ## Manual Usage (Advanced)
 
